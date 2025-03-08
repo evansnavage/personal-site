@@ -1,0 +1,65 @@
+h1, h2, h3, h4, p {
+    font-family: "JetBrainsMono Nerd Font", "Jetbrains Mono", monospace;
+    font-size: 24;
+}
+
+.column-container {
+    display: flex;
+}
+.column-container > * {
+    margin: 25px
+}
+.profile-image {
+    width: 400px;
+}
+.terminals-container {
+    display:flex;
+    width: 100%;
+}
+
+.terminal-container {
+    height: 98vh;
+    max-height: 98vh;
+    background-color: #2b2b2b;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.terminal-output {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.terminal-input-line {
+    display: flex;
+    margin-top: 5px;
+}
+
+.prompt {
+    color: white;
+    margin-right: 8px;
+    font-weight: bold;
+    user-select: none;
+}
+input[type="text"].terminal-input {
+    background-color: transparent;
+    border: none;
+    color: #f8f8f2;
+    font-family: inherit;
+    font-size: inherit;
+    flex-grow: 1;
+    outline: none;
+}
+a:link {
+    color: #bed3de
+}
+a:visited {
+    color: #bed3de
+}

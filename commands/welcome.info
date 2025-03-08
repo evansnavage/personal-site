@@ -1,0 +1,5 @@
+#!Description:
+Displays the welcome message again. Also regenerates all of the commands because it made hot-reload way easier lol.
+#!Response:
+Hi I'm Evan Savage! Welcome to my website! 👋
+Check out `help` to see the available commands.

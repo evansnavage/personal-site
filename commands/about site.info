@@ -1,0 +1,7 @@
+#!Description:
+Displays some information about the website you're on right now.
+#!Response:
+I made this website in ~10 hours using FastAPI (Python) and HTMX. The frontend is ~100 lines long, only 12 of which are javascript. The backend is similarly tiny at ~70 lines.
+These commands are defined by .info files that I parse to generate the help dialogue and responses, otherwise there's really nothing special going on.
+There aren't any fun things on it, and it's pretty boring, but it was a lot of fun to make. I'll probably come back another day and add in `cowsay | fortune` or something.
+Anyways I guess I'm off to host this on my vps  and figure out dns somehow.
