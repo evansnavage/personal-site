@@ -83,3 +83,6 @@ async def process_command(command: str = "help"):
         return f"<p>{COMMAND_RESPONSES[command][1]}</p>"
     except KeyError:
         return f"<p>Did not find a command matching: `{command}`, check `help` for the list of possible commands.</p>"
+@app.get("/favicon")
+async def get_icon():
+    return FileResponse("favicon.ico", media_type="image/ico")
