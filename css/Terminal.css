@@ -58,7 +58,7 @@ input[type="text"].terminal-input {
     font-size: inherit;
     flex-grow: 1;
     outline: none;
-    width: 80vw;
+    width: 40vw;
 }
 a:link {
     color: #bed3de

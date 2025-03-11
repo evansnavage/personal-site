@@ -3,13 +3,19 @@ Displays information about projects I am working on or have worked on.
 #!Response:
 <--- Top 3 --->
 Rhodium Programming Language 💻 <a href="https://github.com/evansnavage/Rhodium">https://github.com/evansnavage/Rhodium</a>: A programming language, so far I've designed the syntax, written 4 versions of a lexer and chosen the best approach, written a grammar and laid the foundation for writing the parser.
+
 Alchemy Alley ⚗️ [Class Project, Introduction to Software Engineering] <a href="https://github.com/evansnavage/Swen261-Project-Alchemy-Alley">https://github.com/evansnavage/Swen261-Project-Alchemy-Alley</a>: Website made with Angular 17 and Spring. It's a fun little gamified website, and I learned a lot working on it.
+
 Hand Waving Robot 👋: I'm the projects head at the Society of Software Engineers at RIT and we wave at tours, it's part of the tour script to call us the "friendliest club on campus". For 13 years people have tried, and allegedly sometimes succeeded, but mostly failed at crafting a robot to wave at tours alongside us, but there is no evidence of any successes. We believe the project to be cursed, but I will complete this project, and that robot will wave at tours and visitors to ImagineRIT 2025. Will also keep track of how many people are in our mentoring lab.
 <--- Active --->
 HoloCAP 🆎 [Minor Role]: Live captioning for holoLens with OpenAI whisper. Packaged as an electron web app.
+
 Whiteboard Plotter 🖊️: A pen plotter, but huge and for a whiteboard, mostly hardware, reading gcode in Python and translating to physical motion.
+
 DinDin 🍝 [Class Project, Human Centered Requirements and Design]: Mockups and design work for social media app similar to Instagram; gathered customer requirements, user feedback, and tested design accesibility.
 <--- Past --->
 Inventory Management System 🗃️ <a href="https://github.com/evansnavage/legendary-octo-invention">https://github.com/evansnavage/legendary-octo-invention</a>: A project I worked on with a couple of friends for Brickhack 11, we didn't end up demoing, as we didn't build a frontend, but this was a great way for me to learn MongoDB and brush up on using Flask.
+
 Bowling Alley Simulation 🎳 [Class Project, Engineering of Software Subsystems]: Worked to improve a java desktop application written in 2003, my team greatly improved responsiveness without breaking any core functionality.
+
 Nightclub Attendance Tracker ♣️ [Class Project, Web Engineering]: Wrote a basic React web app supported by Flask REST api and PostGreSQL.
