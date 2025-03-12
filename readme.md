@@ -3,7 +3,7 @@ A simple personal portfolio website I threw together today, uses FastAPI and HTM
 ![A screenshot of the `help` output and the output for a mistyped command](/demo2.png)
 
 !Future:
-- Autoscroll down (for authenticity)
+- Autoscroll down (for authenticity) [thanks abby]
 - Fix input box width, the > moves off line at non 16:9 ratio
 - Fun stuff (My implementations of cowsay and fortune maybe? Hell nightmare)
 - About tabs pop out to the side and it tiles?
