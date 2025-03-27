@@ -1,68 +1,89 @@
-h1, h2, h3, h4, p, strong {
+:root {
+    --text: #ece9eb;
+    --background: #060505;
+    --primary: #ef80c0;
+    --secondary: #5b3e4f;
+    --accent: #ab7795;
+}
+
+* {
     font-family: "JetBrainsMono Nerd Font", "Jetbrains Mono", monospace;
     font-size: 24;
+    color: var(--text)
 }
 
-.column-container {
+h1 {
+    font-size: 48;
+}
+
+h2 {
+    font-size: 36;
+}
+
+body {
+    display: flex;
+    background-color: var(--background);
+    justify-content: center;
+}
+
+.paneContainer {
+    display: flex;
+    width: 99vw;
+    height: 99vh;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.pane {
+    background-color: var(--background);
+    color: var(--text);
+    margin: 4px;
+    padding: 4px;
+    border: 2px solid var(--accent);
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     display: flex;
 }
-.column-container > * {
-    margin: 25px
+
+.left {
+    width: 15%;
+    flex-direction: column;
+    justify-content: left;
+
 }
-.profile-image {
-    width: 400px;
+
+.center {
+    width: 30%;
+    flex-direction: column;
+    justify-content: left;
 }
-.terminals-container {
-    display:flex;
+
+.right {
+    width: 55%;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+
+.button {
     width: 100%;
-}
-
-.terminal-container {
-    height: 98vh;
-    max-height: 98vh;
-    background-color: #2b2b2b;
-    color: #f8f8f2;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    overflow-y: auto;
-    max-width: 100%;
-    box-sizing: border-box;
-    width: 100%;
-}
-
-.terminal-output {
-    margin-bottom: 10px;
-    line-height: 1.5;
-    white-space: pre-wrap;
-    border-bottom: 1px solid #f8f8f2;
-}
-
-.terminal-input-line {
-    display: flex;
-    margin-top: 5px;
-}
-
-.prompt {
-    color: white;
-    margin-right: 8px;
-    font-weight: bold;
-    user-select: none;
-}
-input[type="text"].terminal-input {
-    background-color: transparent;
     border: none;
-    border-bottom: 1px solid #f8f8f2;
-    color: #f8f8f2;
-    font-family: inherit;
-    font-size: inherit;
-    flex-grow: 1;
+    background: none;
+    color: var(--text)
+}
+
+.button:hover {
+    color: var(--background);
+    background-color: var(--text);
+}
+.button:hover>* {
+    color: var(--background);
+}
+.button:focus {
+    background-color: var(--text);
     outline: none;
-    width: 40vw;
 }
-a:link {
-    color: #bed3de
-}
-a:visited {
-    color: #bed3de
+.button:focus > * {
+    color: var(--background);
 }

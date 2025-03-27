@@ -12,53 +12,41 @@
             integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+"
             crossorigin="anonymous"
         ></script>
+        <script src="{{ url_for('js', path='keyboardnav.js') }}"></script>
     </head>
     <body>
-        <div class="terminals-container">
-            <div class="terminal-container">
-                <div
-                    id="terminal-output"
-                    class="terminal-output"
-                    hx-get="/terminal-command?command=welcome"
-                    hx-trigger="load once"
-                    hx-target="#terminal-output"
+        <div class="paneContainer">
+            <div class="pane left">
+                <button
+                    class="button"
+                    hx-get="/folder/personal"
+                    hx-target=".pane.center"
                     hx-swap="innerHTML"
-                ></div>
-                <div class="terminal-input-line">
-                    <span class="prompt"> visitor@evansavage.me > </span>
-                    <form
-                        hx-get="/terminal-command"
-                        hx-trigger="submit"
-                        hx-target="#terminal-output"
-                        hx-swap="beforeend"
-                    >
-                        <input
-                            type="text"
-                            name="command"
-                            id="terminal-input"
-                            class="terminal-input"
-                            autofocus
-                            autocomplete="off"
-                        />
-                    </form>
-                </div>
+                    tabindex="0"
+                >
+                    <h1>Personal</h1>
+                </button>
+                <button
+                    class="button"
+                    hx-get="/folder/projects"
+                    hx-target=".pane.center"
+                    hx-swap="innerHTML"
+                    tabindex="0"
+                >
+                    <h1>Projects</h1>
+                </button>
+                <button
+                    class="button"
+                    hx-get="/folder/resume"
+                    hx-target=".pane.center"
+                    hx-swap="innerHTML"
+                    tabindex="0"
+                >
+                    <h1>Misc</h1>
+                </button>
             </div>
+            <div class="pane center"></div>
+            <div class="pane right" id="result-container"></div>
         </div>
-
-        <script>
-            // Focus input field when page loads
-            document.addEventListener("DOMContentLoaded", function () {
-                document.getElementById("terminal-input").focus();
-            });
-
-            // Clear input after submission but maintain focus
-            document
-                .querySelector("form")
-                .addEventListener("htmx:afterOnLoad", function () {
-                    const input = document.getElementById("terminal-input");
-                    input.value = "";
-                    input.focus();
-                });
-        </script>
     </body>
 </html>

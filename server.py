@@ -5,49 +5,9 @@ from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-COMMAND_RESPONSES = {}
-
-
-def generate_help_prompt():
-    help_text = "Available commands:\n"
-    for command, description in COMMAND_RESPONSES.items():
-        # align in accordance to longest command name
-        max_length = max(len(cmd) for cmd in COMMAND_RESPONSES.keys())
-        help_text += f"    <strong style='display: inline-block; min-width: {max_length + 2}ch;'>{command}</strong> {description[0]}\n"
-    return help_text
-
-
-def generate_commands():
-    # generate commands from proprietary .info files
-    for filename in os.listdir("./commands"):
-        if filename.endswith(".info"):
-            command_name = filename[:-5]
-            with open(os.path.join("./commands", filename), "r") as file:
-                # parse each file, a shebang (#!) indicates a new section
-                read_file = file.read()
-                sections = read_file.split("#!")
-                description = ""  # and then I immediately hardcoded the sections
-                response = ""
-                for section in sections:
-                    if section.startswith("Description:"):
-                        description = section.split("Description:")[1].strip()
-                    elif section.startswith("Response:"):
-                        response = section.split(
-                            "Response:"
-                        )[
-                            1
-                        ].strip()  # and stored them as a tuple instead of map so the section name means nothing
-                COMMAND_RESPONSES[command_name] = (description, response)
-
-
-generate_commands()
-COMMAND_RESPONSES["help"] = (
-    "Shows the help message, but you shouldn't be able to see this...",
-    generate_help_prompt(),
-)
-
 app = FastAPI()
 app.mount("/css", StaticFiles(directory="css"), name="css")
+app.mount("/js", StaticFiles(directory="js"), name="js")
 templates = Jinja2Templates(directory="views")
 
 
@@ -57,32 +17,57 @@ async def index(request: Request):
 
 
 @app.get("/resume")
-async def get_pdf():
+async def get_resume():
     headers = {"Content-Disposition": "inline; filename=Savage_Evan-Resume.pdf"}
     return FileResponse(
         "Savage_Evan-Resume.pdf", media_type="application/pdf", headers=headers
     )
 
+@app.get("/my-resume", response_class=HTMLResponse)
+async def embed_resume(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="resume.html",
+    )
 
 @app.get("/me")
 async def get_profile():
     return FileResponse("me.jpg", media_type="image/jpeg")
 
+@app.get("/profile-image", response_class=HTMLResponse)
+async def embed_profile(request: Request):
+    return HTMLResponse(
+        content='<img src="/me" alt="Profile Image" style="max-width: 70%; height: auto;" />',
+        status_code=200,
+    )
+@app.get("/contact", response_class=HTMLResponse)
+async def embed_contact(request: Request):
+    return HTMLResponse(
+        content="""
+        <div>
+        <h2>Phone #: +1 (402) 575-1039</h2>
+        <hr>
+        <h2>Email: <a href="mailto:contact@evansavage.me">contact@evansavage.me</a></h2>
+        <hr>
+        <h2>LinkedIn: <a href="https://LinkedIn.com/in/evan-savage">https://linkedin.com/in/evan-savage</a></h2>
+        <h2>Github: <a href="https://github.com/evansnavage">https://github.com/evansnavage</a></h2>
+        </div>""",
+        status_code=200,
+    )
 
-@app.get("/terminal-command/", response_class=HTMLResponse)
-async def process_command(command: str = "help"):
-    ### Exceptions to standard
-    if command == "clear":
-        return HTMLResponse('<meta http-equiv="refresh" content="0;" />')
-    if command == "resume":
-        return HTMLResponse('<meta http-equiv="refresh" content="0; url=/resume" />')
-    if command == "welcome" or command == "help":
-        generate_commands()
-    ### Normal command handling
-    try:
-        return f"<p>{COMMAND_RESPONSES[command][1]}</p>"
-    except KeyError:
-        return f"<p>Did not find a command matching: `{command}`, check `help` for the list of possible commands.</p>"
+@app.get("/folder/personal", response_class=HTMLResponse)
+async def get_folder_personal(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="personal_folder.html",
+    )
+@app.get("/folder/projects", response_class=HTMLResponse)
+async def get_folder_projects(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="projects_folder.html",
+    )
+
 @app.get("/favicon")
 async def get_icon():
     return FileResponse("favicon.ico", media_type="image/ico")
