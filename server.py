@@ -55,6 +55,23 @@ async def embed_contact(request: Request):
         status_code=200,
     )
 
+@app.get("/rhodium", response_class=HTMLResponse)
+async def rhodium(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="rhodium.html",
+    )
+
+@app.get("/alchemy-alley", response_class=HTMLResponse)
+async def alchemy_alley(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="alchemy_alley.html",
+    )
+
+
+
+
 @app.get("/folder/personal", response_class=HTMLResponse)
 async def get_folder_personal(request: Request):
     return templates.TemplateResponse(
