@@ -1,0 +1,15 @@
+---
+const { href, text, variant } = Astro.props;
+
+let buttonClass = "button";
+if (variant === "nav") {
+  buttonClass = "nav-button";
+}
+---
+
+<a
+  href={href}
+  class={`${buttonClass}`}
+>
+  {text}
+</a>

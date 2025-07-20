@@ -1,0 +1,44 @@
+---
+const { title } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const navPages = [
+  { path: '/', name: 'Home' },
+  { path: '/portfolio', name: 'Portfolio' },
+  { path: '/blog', name: 'Blog' },
+];
+
+const currentIndex = navPages.findIndex(page => page.path === currentPath);
+
+const prevIndex = (currentIndex - 1 + navPages.length) % navPages.length;
+const nextIndex = (currentIndex + 1) % navPages.length;
+
+const prevPage = navPages[prevIndex];
+const nextPage = navPages[nextIndex];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Evan Savage's Website; With great information about the titular Evan Savage." />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+    
+  <body>
+    <div class="arrow-nav-wrapper">
+      <main class="container main-content">
+        <a href={prevPage.path} class="arrow-nav-left">
+          &#8592; <span>{prevPage.name}</span>
+        </a>
+        <slot />
+        <a href={nextPage.path} class="arrow-nav-right">
+          <span>{nextPage.name}</span> &#8594;
+        </a>
+      </main>
+    </div>
+  </body>
+</html>
