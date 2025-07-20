@@ -1,0 +1,51 @@
+---
+import "../styles/timeline.css";
+const timelineItems = [
+    {
+        title: "Started Learning Programming",
+        timeframe: "2010-2012",
+        description: "Began my journey into the world of coding with Python.",
+    },
+    {
+        title: "First Web Project",
+        timeframe: "2013",
+        description:
+            "Developed my first static website using HTML, CSS, and JavaScript.",
+    },
+    {
+        title: "Graduated University",
+        timeframe: "2017",
+        description: "Completed my degree in Computer Science.",
+    },
+    {
+        title: "Joined First Company",
+        timeframe: "2017-2020",
+        description:
+            "Started my professional career as a Junior Software Engineer.",
+    },
+    {
+        title: "Promoted to Mid-Level Engineer",
+        timeframe: "2020-Present",
+        description:
+            "Recognized for my contributions and advanced to a mid-level role.",
+    },
+].reverse();
+---
+
+<div class="timeline-card card">
+    <h2 class="heading-2">Experience & Education</h2>
+    <div class="timeline-container">
+        {
+            timelineItems.map((item) => (
+                <div class="timeline-item">
+                    <div class="timeline-marker" />
+                    <div class="timeline-content">
+                        <h4>{item.timeframe}</h4>
+                        <h3>{item.title}</h3>
+                        <p>{item.description}</p>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</div>

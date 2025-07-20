@@ -1,0 +1,96 @@
+---
+import "../styles/skills.css";
+const languages = [
+    { name: "Python", logoName: "python", bgColor: "3776AB" },
+    { name: "Java", logoName: "openjdk", bgColor: "007396" },
+    { name: "Javascript", logoName: "javascript", bgColor: "F7DF1E" },
+    { name: "Typescript", logoName: "typescript", bgColor: "007ACC" },
+    { name: "C", logoName: "c", bgColor: "A8B9CC" },
+    { name: "SQL", logoName: "postgresql", bgColor: "4479A1" },
+    { name: "HTML", logoName: "html5", bgColor: "E34F26" },
+    { name: "Apex and LWC", logoName: "salesforce", bgColor: "0064C0" },
+];
+
+const engineeringSkills = [
+    { name: "Git", logoName: "git", bgColor: "F05032" },
+    { name: "UML", logoName: "uml", bgColor: "000000" },
+    { name: "Agile", logoName: "jira", bgColor: "0052CC" },
+    { name: "SonarQube", logoName: "sonarqubeserver", bgColor: "4E9BDB" },
+    { name: "Spring", logoName: "spring", bgColor: "6DB33F" },
+    { name: "Node.js", logoName: "node.js", bgColor: "339933" },
+    { name: "Angular", logoName: "angular", bgColor: "DD0031" },
+    { name: "JUnit", logoName: "junit5", bgColor: "25A162" },
+    { name: "Slack", logoName: "slack", bgColor: "4A154B" },
+    { name: "Trello", logoName: "trello", bgColor: "0052CC" },
+    { name: "Jira", logoName: "jira", bgColor: "0052CC" },
+    { name: "Asana", logoName: "asana", bgColor: "F05032" },
+    { name: "Salesforce", logoName: "salesforce", bgColor: "0064C0" },
+];
+
+const designSkills = [
+    { name: "Documentation", logoName: "readthedocs", bgColor: "8CA1AF" },
+    {
+        name: "System Design",
+        logoName: "internetarchive",
+        bgColor: "000000",
+    },
+    {
+        name: "Object Orientation",
+        logoName: "openjdk",
+        bgColor: "007396",
+    },
+    { name: "Figma", logoName: "figma", bgColor: "F24E1E" },
+];
+---
+
+<div class="skills-card card">
+    <h2 class="heading-2">Skills</h2>
+    <h3 class="heading-3">Languages</h3>
+    <div class="skills-container">
+        <ul>
+            {
+                languages.map((skill) => (
+                    <li style={{ backgroundColor: `#${skill.bgColor}` }}>
+                        <img
+                            src={`https://img.shields.io/badge/-${encodeURIComponent(skill.name)}-${skill.bgColor}?style=flat-square&logo=${skill.logoName}&logoColor=white`}
+                            alt={skill.name}
+                            class="skill-logo"
+                        />
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+    <h3 class="heading-3">Engineering</h3>
+    <div class="skills-container">
+        <ul>
+            {
+                engineeringSkills.map((skill) => (
+                    <li style={{ backgroundColor: `#${skill.bgColor}` }}>
+                        <img
+                            src={`https://img.shields.io/badge/-${encodeURIComponent(skill.name)}-${skill.bgColor}?style=flat-square&logo=${skill.logoName}&logoColor=white`}
+                            alt={skill.name}
+                            class="skill-logo"
+                        />
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+    <h3 class="heading-3">Design</h3>
+    <div class="skills-container">
+        <ul>
+            {
+                designSkills.map((skill) => (
+                    <li style={{ backgroundColor: `#${skill.bgColor}` }}>
+                        <img
+                            src={`https://img.shields.io/badge/-${encodeURIComponent(skill.name)}-${skill.bgColor}?style=flat-square&logo=${skill.logoName}&logoColor=white`}
+                            alt={skill.name}
+                            class="skill-logo"
+                        />
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</div>

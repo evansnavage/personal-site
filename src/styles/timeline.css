@@ -1,0 +1,111 @@
+.timeline-card {
+        margin-top: 2rem;
+        max-height: 500px; /* Adjust as needed */
+        overflow-y: auto;
+    }
+
+    .timeline-container {
+        position: relative;
+        padding: 20px 0;
+    }
+
+    .timeline-container::before {
+        height: 100%;
+        content: '';
+        position: absolute;
+        width: 2px;
+        background: var(--color-accent); /* Assuming you have an accent color variable */
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .timeline-item {
+        display: flex;
+        justify-content: center; /* Center items initially */
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .timeline-marker {
+        width: 12px;
+        height: 12px;
+        background: var(--color-accent);
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 0;
+        z-index: 1;
+    }
+
+    .timeline-content {
+        background: var(--color-bg-primary); /* Using primary background for darker card */
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: var(--shadow-elevation-low); /* Assuming a shadow variable */
+        width: 45%; /* Adjust width as needed */
+        overflow: hidden;
+    }
+
+    .timeline-content h3 {
+        margin-bottom: 5px;
+    }
+
+    .timeline-content h4 {
+        font-size: 0.9em;
+        color: var(--color-text-primary);
+        margin-bottom: 10px;
+    }
+
+    .timeline-content p {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+        align-self: flex-start; /* Align to the left */
+        margin-right: 55%; /* Push content to the left of the marker */
+        text-align: right;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+        align-self: flex-end; /* Align to the right */
+        margin-left: 55%; /* Push content to the right of the marker */
+    }
+
+    .timeline-item:hover .timeline-content p {
+        opacity: 1;
+        max-height: 200px; /* Adjust based on expected content height */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .timeline-container::before {
+            left: 20px; /* Move timeline line to the left */
+            transform: translateX(0);
+        }
+
+        .timeline-item {
+            justify-content: flex-start; /* Align all items to the left */
+        }
+
+        .timeline-marker {
+            left: 20px; /* Align markers with the line */
+            transform: translateX(-50%);
+        }
+
+        .timeline-content {
+            width: calc(100% - 60px); /* Adjust width for smaller screens */
+            margin-left: 60px; /* Space for marker and line */
+            margin-right: 0 !important; /* Override odd/even margin */
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content,
+        .timeline-item:nth-child(even) .timeline-content {
+            align-self: flex-start;
+        }
+    }

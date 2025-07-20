@@ -1,0 +1,26 @@
+.skills-card {
+        margin-top: 2rem;
+    }
+
+    .skills-container ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .skills-container li {
+        height:30px;
+        width: 18%;
+        border-radius: 10px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .skill-logo {
+        height: 20px; /* Shields.io badges are typically around 20px tall */
+    }
